@@ -10,7 +10,7 @@ void processLine(char *lineBuffer) {
     static char fromFilePath[4096];
     static char toFilePath[4096];
     if (2 != sscanf(lineBuffer, "%s %[^\n]s", fromFilePath, toFilePath)) {
-        fprintf(stderr, "fail\n");
+        fprintf(stderr, "ERROR bad_input\n");
         return;
     }
 
@@ -33,16 +33,15 @@ void processLine(char *lineBuffer) {
     wkhtmltopdf_set_error_callback(c, error);
     wkhtmltopdf_add_object(c, os, NULL);
     if (wkhtmltopdf_convert(c)) {
-        fprintf(stdout, "ok\n");
+        fprintf(stdout, "OK\n");
     }
     else {
-        fprintf(stderr, "fail\n");
+        fprintf(stderr, "ERROR conversion_failed\n");
     }
     wkhtmltopdf_destroy_converter(c);
 }
 
 int main() {
-
     if (!wkhtmltopdf_init(false)) {
         return 1;
     }

@@ -1,8 +1,7 @@
 defmodule HtmlToPdf do
 
-  def convert(input_file, output_file) do
-
-
+  def convert(from_file, to_file) do
+    HtmlToPdf.Pool.convert(from_file, to_file)
   end
 
 end
