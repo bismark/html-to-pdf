@@ -1,9 +1,9 @@
-defmodule HtmlToPdf.Worker do
+defmodule HtmlToPdf.Khtml.Worker do
   use GenServer
 
   alias __MODULE__, as: This
 
-  @server_path Path.expand("../../priv/bin/server", "#{__DIR__}")
+  @server_path Path.expand("priv/bin/server", System.cwd)
   # Expected Errors
   _ = [:bad_input, :conversion_failed]
 

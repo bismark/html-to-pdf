@@ -6,7 +6,7 @@ defmodule HtmlToPdf.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      HtmlToPdf.Pool,
+      HtmlToPdf.Khtml.Pool,
     ]
 
     opts = [strategy: :one_for_one, name: HtmlToPdf.Supervisor]
