@@ -33,7 +33,8 @@ void processLine(char *lineBuffer) {
     wkhtmltopdf_set_error_callback(c, error);
     wkhtmltopdf_add_object(c, os, NULL);
     if (wkhtmltopdf_convert(c)) {
-        fprintf(stdout, "OK\n");
+        printf("OK\n");
+        fflush(stdout);
     }
     else {
         fprintf(stderr, "ERROR conversion_failed\n");

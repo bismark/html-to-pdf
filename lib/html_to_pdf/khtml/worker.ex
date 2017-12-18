@@ -3,7 +3,7 @@ defmodule HtmlToPdf.Khtml.Worker do
 
   alias __MODULE__, as: This
 
-  @server_path Path.expand("priv/bin/server", System.cwd)
+  @server_path Path.expand("priv/bin/wkhtmltopdf-server", System.cwd)
   # Expected Errors
   _ = [:bad_input, :conversion_failed]
 

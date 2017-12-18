@@ -6,7 +6,7 @@ defmodule HtmlToPdf.Khtml.Pool do
     config = [
       name: {:local, This},
       worker_module: HtmlToPdf.Khtml.Worker,
-      size: 2,
+      size: System.schedulers_online,
       max_overflow: 1,
     ]
    :poolboy.child_spec(This, config, [])
@@ -15,7 +15,7 @@ defmodule HtmlToPdf.Khtml.Pool do
 
   def convert(from_path, to_path) do
     :poolboy.transaction(This, fn worker ->
-      GenServer.call(worker, {:convert, from_path, to_path}, 10000)
+      GenServer.call(worker, {:convert, from_path, to_path}, :infinity)
     end)
   end
 

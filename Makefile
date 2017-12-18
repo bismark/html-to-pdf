@@ -1,10 +1,10 @@
 CC = gcc
 CFLAGS =
 LDFLAGS = -lwkhtmltox -Wall -pedantic -ggdb
-SOURCE_FILES = c_src/server.c
+SOURCE_FILES = c_src/wkhtmltopdf-server.c
 OBJECT_FILES = $(SOURCE_FILES:.c=.o)
 	EXECUTABLE_DIRECTORY = priv/bin
-	EXECUTABLE = $(EXECUTABLE_DIRECTORY)/server
+	EXECUTABLE = $(EXECUTABLE_DIRECTORY)/wkhtmltopdf-server
 
 all: $(SOURCE_FILES) $(EXECUTABLE)
 
