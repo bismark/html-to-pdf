@@ -7,6 +7,7 @@ defmodule HtmlToPdf.Application do
   def start(_type, _args) do
     children = [
       HtmlToPdf.Khtml.Pool,
+      #HtmlToPdf.Chrome.Chrome,
     ]
 
     opts = [strategy: :one_for_one, name: HtmlToPdf.Supervisor]

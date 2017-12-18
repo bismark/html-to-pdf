@@ -24,6 +24,9 @@ defmodule HtmlToPdf.Mixfile do
       {:elixir_make, "~> 0.4", runtime: false},
       {:exexec, "~> 0.1.0"},
       {:poolboy, "~> 1.5"},
+      {:socket, "~> 0.3.12"},
+      {:httpoison, "~> 0.13.0"},
+      {:poison, "~> 3.1"},
     ]
   end
 end
