@@ -8,11 +8,9 @@ defmodule HtmlToPdf.Chrome.RootSupervisor do
   def init(_arg) do
     children = [
       HtmlToPdf.Chrome.Chrome,
-      HtmlToPdf.Chrome.Browser,
+      HtmlToPdf.Chrome.Browser
     ]
 
     Supervisor.init(children, strategy: :rest_for_one)
   end
-
-
 end

@@ -1,12 +1,10 @@
 defmodule HtmlToPdf.WebSocketReceiver do
-
   defmodule Fragment do
     defstruct [
       :type,
       :data
     ]
   end
-
 
   def start_link(socket) do
     pid = spawn_link(__MODULE__, :listen, [socket, self(), nil])
@@ -49,5 +47,4 @@ defmodule HtmlToPdf.WebSocketReceiver do
         listen(socket, owner, nil)
     end
   end
-
 end

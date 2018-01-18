@@ -1,11 +1,10 @@
 defmodule HtmlToPdf.Chrome.Chrome do
-
   @command [
     "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome",
     "--headless",
     "--disable-gpu",
     "--remote-debugging-port=9222",
-    "--disable-javascript",
+    "--disable-javascript"
   ]
 
   use GenServer
@@ -20,6 +19,4 @@ defmodule HtmlToPdf.Chrome.Chrome do
     Exexec.run_link(@command)
     {:ok, %{}}
   end
-
 end
-

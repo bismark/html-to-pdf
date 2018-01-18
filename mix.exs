@@ -6,9 +6,9 @@ defmodule HtmlToPdf.Mixfile do
       app: :htmltopdf,
       version: "0.1.0",
       elixir: "~> 1.5",
-      start_permanent: Mix.env == :prod,
+      start_permanent: Mix.env() == :prod,
       deps: deps(),
-      compilers: [:elixir_make] ++ Mix.compilers
+      compilers: [:elixir_make] ++ Mix.compilers()
     ]
   end
 
@@ -26,7 +26,7 @@ defmodule HtmlToPdf.Mixfile do
       {:poolboy, "~> 1.5"},
       {:socket, "~> 0.3.12"},
       {:httpoison, "~> 0.13.0"},
-      {:poison, "~> 3.1"},
+      {:poison, "~> 3.1"}
     ]
   end
 end

@@ -3,7 +3,7 @@ defmodule HtmlToPdf.Khtml.Worker do
 
   alias __MODULE__, as: This
 
-  @server_path Path.expand("priv/bin/wkhtmltopdf-server", System.cwd)
+  @server_path Path.expand("priv/bin/wkhtmltopdf-server", System.cwd())
   # Expected Errors
   _ = [:bad_input, :conversion_failed]
 
@@ -20,12 +20,15 @@ defmodule HtmlToPdf.Khtml.Worker do
 
   @impl true
   def handle_call({:convert, from_path, to_path}, _, state = {server_pid, server_os_pid}) do
-    Exexec.send server_pid, "#{from_path} #{to_path}\n"
+    Exexec.send(server_pid, "#{from_path} #{to_path}\n")
+
     receive do
       {:stderr, ^server_os_pid, "ERROR" <> message} ->
         {:reply, {:error, format_error(message)}, state}
+
       {:stdout, ^server_os_pid, "ERROR" <> message} ->
         {:reply, {:error, format_error(message)}, state}
+
       {:stdout, ^server_os_pid, "OK" <> _} ->
         {:reply, :ok, state}
     end
@@ -33,9 +36,7 @@ defmodule HtmlToPdf.Khtml.Worker do
 
   defp format_error(message) do
     message
-      |> String.trim
-      |> String.to_existing_atom
+    |> String.trim()
+    |> String.to_existing_atom()
   end
-
 end
-
