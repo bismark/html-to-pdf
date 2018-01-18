@@ -31,7 +31,7 @@ defmodule HtmlToPdf do
     files = for i <- 1..iterations do
       from_file = Path.expand("input/test-#{i}.html", System.cwd)
       to_file = Path.expand("output/test-#{i}.pdf", System.cwd)
-      File.copy("test.html", from_file)
+      File.copy("priv/test.html", from_file)
       {from_file, to_file}
     end
 
